@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-
 using System.Linq;
 
 namespace KTS
@@ -46,11 +45,11 @@ namespace KTS
         /// </summary>
         public float Period { get; set; }
        public  User user { get; set; }
-        public Device device { get; set; }
+       // public Device device { get; set; }
 
         public override string ToString()
         {
-            return Number + "=" + Description + "=" + Period + " месяц="+user.Familia+"="+device.Name;
+            return Number + "=" + Description + "=" + Period + " месяц=" + user.Familia;// +"="+device.Name;
         }
     }
     public class User
@@ -64,9 +63,13 @@ namespace KTS
         public virtual List<Profilactic> UserProfilactics { get; set; }
         public override string ToString()
         {
-            if (Name.Length > 0 && Sec_Name.Length > 0)
+            if (Familia != null && Name != null && Sec_Name != null &&
+                Name.Length > 0 && Sec_Name.Length > 0)
                 return Familia + " " + Name[0] + ". " + Sec_Name[0] + ".";
-            else return Familia;
+            else if (Familia != null) return Familia;
+            else if (Name != null) return Name;
+            else if (Sec_Name != null) return Sec_Name;
+            else return "empty";
         }
     }
 

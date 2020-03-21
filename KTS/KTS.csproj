@@ -10,7 +10,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>KTS</RootNamespace>
     <AssemblyName>KTS</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -98,7 +98,8 @@
     </Reference>
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
     <Reference Include="SQLite.CodeFirst, Version=1.5.3.29, Culture=neutral, PublicKeyToken=eb96ba0a78d831a7, processorArchitecture=MSIL">
-      <HintPath>..\packages\SQLite.CodeFirst.1.5.3.29\lib\net40\SQLite.CodeFirst.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\SQLite.CodeFirst.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -145,10 +146,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddUserForm.cs">
+    <Compile Include="UserForms\AddUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddUserForm.Designer.cs">
+    <Compile Include="UserForms\AddUserForm.Designer.cs">
       <DependentUpon>AddUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DBContext.cs" />
@@ -160,7 +161,25 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddUserForm.resx">
+    <Compile Include="UserForms\DevicesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\DevicesForm.Designer.cs">
+      <DependentUpon>DevicesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\ProfilacticsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\ProfilacticsForm.Designer.cs">
+      <DependentUpon>ProfilacticsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\UsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\UsersForm.Designer.cs">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UserForms\AddUserForm.resx">
       <DependentUpon>AddUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
@@ -176,6 +195,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserForms\DevicesForm.resx">
+      <DependentUpon>DevicesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\ProfilacticsForm.resx">
+      <DependentUpon>ProfilacticsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UsersForm.resx">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\MyContext.datasource" />
@@ -192,6 +220,7 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

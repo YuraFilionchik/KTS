@@ -12,6 +12,7 @@ namespace KTS
 {
     public partial class Form1 : Form
     {
+        
         MyContext DB = new MyContext();
         private BindingSource bsDevs=new BindingSource();
         private BindingSource bsUsers=new BindingSource();
@@ -43,6 +44,8 @@ namespace KTS
             if (cbSelectUser.SelectedItem == null) return;
             DB.Users.Load();
             string userFamil = cbSelectUser.SelectedItem.ToString().Split(' ').First();
+            if (userFamil == "empty") return;
+            if (DB.Users.Count() == 0) return;
             var userDevs = DB.Users.First(x=>x.Familia==userFamil).UserDevices;
             //TODO trim Familia from combobox
            if(userDevs!=null) bsDevs.DataSource=userDevs;
@@ -56,11 +59,27 @@ namespace KTS
         //TODO check existing name-fam
         private void ДобавитьРаботникаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddUserForm addUser = new AddUserForm(DB);
-            addUser.ShowDialog();
+
+            UserForms.UsersForm UserForm = new UserForms.UsersForm(DB);
+            UserForm.ShowDialog();
             DB.Users.Load();
-            
-            
+
+
+        }
+
+        //Добавление -удаление оборудования
+        private void оборудованиеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserForms.DevicedForm DevsForm = new UserForms.DevicedForm(DB);
+            DevsForm.ShowDialog();
+            DB.Devices.Load();
+        }
+
+        private void профилактикиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserForms.ProfilacticsForm ProfForm = new UserForms.ProfilacticsForm(DB);
+            ProfForm.ShowDialog();
+            DB.Profilactics.Load();
         }
     }
 }

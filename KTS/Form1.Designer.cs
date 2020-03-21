@@ -35,6 +35,8 @@
             this.добавитьРаботникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.lbDevices = new System.Windows.Forms.ListBox();
+            this.оборудованиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.профилактикиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myContextBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.myContextBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.myContextBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -66,7 +68,9 @@
             // менюToolStripMenuItem
             // 
             this.менюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.добавитьРаботникаToolStripMenuItem});
+            this.добавитьРаботникаToolStripMenuItem,
+            this.оборудованиеToolStripMenuItem,
+            this.профилактикиToolStripMenuItem});
             this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
             this.менюToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.менюToolStripMenuItem.Text = "Меню";
@@ -74,8 +78,8 @@
             // добавитьРаботникаToolStripMenuItem
             // 
             this.добавитьРаботникаToolStripMenuItem.Name = "добавитьРаботникаToolStripMenuItem";
-            this.добавитьРаботникаToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.добавитьРаботникаToolStripMenuItem.Text = "Добавить работника...";
+            this.добавитьРаботникаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.добавитьРаботникаToolStripMenuItem.Text = "Работники...";
             this.добавитьРаботникаToolStripMenuItem.Click += new System.EventHandler(this.ДобавитьРаботникаToolStripMenuItem_Click);
             // 
             // label1
@@ -96,6 +100,20 @@
             this.lbDevices.Name = "lbDevices";
             this.lbDevices.Size = new System.Drawing.Size(235, 420);
             this.lbDevices.TabIndex = 3;
+            // 
+            // оборудованиеToolStripMenuItem
+            // 
+            this.оборудованиеToolStripMenuItem.Name = "оборудованиеToolStripMenuItem";
+            this.оборудованиеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оборудованиеToolStripMenuItem.Text = "Оборудование...";
+            this.оборудованиеToolStripMenuItem.Click += new System.EventHandler(this.оборудованиеToolStripMenuItem_Click);
+            // 
+            // профилактикиToolStripMenuItem
+            // 
+            this.профилактикиToolStripMenuItem.Name = "профилактикиToolStripMenuItem";
+            this.профилактикиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.профилактикиToolStripMenuItem.Text = "Профилактики...";
+            this.профилактикиToolStripMenuItem.Click += new System.EventHandler(this.профилактикиToolStripMenuItem_Click);
             // 
             // myContextBindingSource1
             // 
@@ -142,6 +160,8 @@
         private System.Windows.Forms.BindingSource myContextBindingSource1;
         private System.Windows.Forms.BindingSource myContextBindingSource2;
         private System.Windows.Forms.BindingSource myContextBindingSource;
+        private System.Windows.Forms.ToolStripMenuItem оборудованиеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem профилактикиToolStripMenuItem;
     }
 }
 
