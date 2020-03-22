@@ -34,6 +34,24 @@ namespace KTS
             //return Devices.Where(c => c.DeviceId == Users.Where(x => x.UserId==UserID).Where());
         }
 
+        public string[] UserList()
+        {
+            var list = new List<string>();
+            foreach (var usr in Users)
+            {
+                list.Add(usr.Familia);
+            }
+            return list.ToArray();
+        }
+        public string[] DevList()
+        {
+            var list = new List<string>();
+            foreach (var dev in Devices)
+            {
+                list.Add(dev.Name);
+            }
+            return list.ToArray();
+        }
     }
     public class Profilactic
     {
@@ -45,7 +63,7 @@ namespace KTS
         /// </summary>
         public float Period { get; set; }
        public  User user { get; set; }
-       // public Device device { get; set; }
+       public Device device { get; set; }
 
         public override string ToString()
         {
@@ -71,11 +89,13 @@ namespace KTS
             else if (Sec_Name != null) return Sec_Name;
             else return "empty";
         }
+       
     }
 
     public class Device
     {
         public string Name { get; set; }
+        //public string ShortName { get; set; }
         public string Invent { get; set; }
         public int DeviceId { get; set; }
         public string Date { get; set; }
@@ -85,7 +105,15 @@ namespace KTS
             return Name;
         }
     }
-    
+    public class Execution
+    {
+        public int ExecutionId { get; set; }
+        public int UserId { get; set; }
+        public int DeviceId { get; set; }
+        public int ProfId { get; set; }
+        public DateTime ExeDate { get; set; }
+
+    }
 
 
 }

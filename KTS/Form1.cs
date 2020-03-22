@@ -48,7 +48,9 @@ namespace KTS
             if (DB.Users.Count() == 0) return;
             var userDevs = DB.Users.First(x=>x.Familia==userFamil).UserDevices;
             //TODO trim Familia from combobox
-           if(userDevs!=null) bsDevs.DataSource=userDevs;
+            if (userDevs == null) return;
+                bsDevs.DataSource=userDevs;
+            
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)

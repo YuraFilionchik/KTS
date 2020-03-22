@@ -43,14 +43,14 @@
             this.dgvUSERS.Name = "dgvUSERS";
             this.dgvUSERS.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dgvUSERS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUSERS.Size = new System.Drawing.Size(411, 399);
+            this.dgvUSERS.Size = new System.Drawing.Size(653, 399);
             this.dgvUSERS.TabIndex = 1;
             // 
             // ProfilacticsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(411, 399);
+            this.ClientSize = new System.Drawing.Size(653, 399);
             this.Controls.Add(this.dgvUSERS);
             this.Name = "ProfilacticsForm";
             this.Text = "Профилактики";
