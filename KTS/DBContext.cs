@@ -21,6 +21,16 @@ namespace KTS
         public DbSet<Device> Devices { get; set; }
         public DbSet<Profilactic> Profilactics { get; set; }
 
+        public User GetUserByFamily(string family)
+        {
+            var usr = Users.FirstOrDefault(x => x.Familia == family);
+             return usr;
+        }
+        public Device GetDeviceByName(string devName)
+        {
+            var Dev = Devices.FirstOrDefault(x => x.Name == devName);
+            return Dev;
+        }
         public List<Device> GetDevByUser(String Famil)
         {
             this.Users.Load();
@@ -39,9 +49,18 @@ namespace KTS
             var list = new List<string>();
             foreach (var usr in Users)
             {
-                list.Add(usr.Familia);
+                list.Add(usr.ToString());
             }
             return list.ToArray();
+        }
+        public User[] ListUsers()
+        {
+            List<User> returnUsers = new List<User>();
+            foreach (var user in Users)
+            {
+                returnUsers.Add(user);
+            }
+            return returnUsers.ToArray();
         }
         public string[] DevList()
         {
