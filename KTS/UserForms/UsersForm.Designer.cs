@@ -34,7 +34,7 @@
             // 
             // dgvUSERS
             // 
-            this.dgvUSERS.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvUSERS.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUSERS.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvUSERS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUSERS.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -46,13 +46,13 @@
             this.dgvUSERS.Size = new System.Drawing.Size(411, 399);
             this.dgvUSERS.TabIndex = 1;
             // 
-            // Users
+            // UsersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(411, 399);
             this.Controls.Add(this.dgvUSERS);
-            this.Name = "Users";
+            this.Name = "UsersForm";
             this.Text = "Работники";
             ((System.ComponentModel.ISupportInitialize)(this.dgvUSERS)).EndInit();
             this.ResumeLayout(false);

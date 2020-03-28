@@ -36,14 +36,32 @@ namespace KTS
             this.Users.Load();
             
             if (!Users.Any(x => x.Familia == Famil)) return new List<Device>();
-           // User u = Users.First(x => x.Familia == Famil);
-            //var UserID = Users.First(x => x.Familia == Famil).UserId;
-            var DevList = Users.First(x => x.Familia == Famil).UserDevices;
-            
+           User u = Users.First(x => x.Familia == Famil);   
+            List<Device> DevList = new List<Device>();  
+            var user_profilactics = Profilactics.Where(x => x.user == u); //все закрепленные профилактики работника
+            if (user_profilactics.Count() == 0) return new List<Device>();
+            DevList.AddRange(from prof in user_profilactics
+                             where !DevList.Contains(prof.device)
+                             select prof.device);
             return DevList;
-            //return Devices.Where(c => c.DeviceId == Users.Where(x => x.UserId==UserID).Where());
+            
         }
-
+        public List<Device> GetDevsByUser(User u)
+        {
+            this.Profilactics.Load();
+            List<Device> DevList = new List<Device>();
+            //DbSet<Profilactic> user_profilactics = Profilactics.; //все закрепленные профилактики работника
+            //if (user_profilactics.Count() == 0) return new List<Device>();
+            DevList = Profilactics.Where(x => x.user.UserId == u.UserId).
+                Select(x=>x.device).ToList();
+            //TODO remove dublicates
+            for (int i = 0; i <DevList.Count; i++)
+            {
+                if (DevList.Count(x => x.DeviceId == DevList[i].DeviceId) > 1) DevList.RemoveAt(i);
+            }
+            return DevList;
+           
+        }
         public string[] UserList()
         {
             var list = new List<string>();

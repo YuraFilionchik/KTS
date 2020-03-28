@@ -34,7 +34,7 @@
             // 
             // dgvDevices
             // 
-            this.dgvDevices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvDevices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDevices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvDevices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDevices.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -43,14 +43,14 @@
             this.dgvDevices.Name = "dgvDevices";
             this.dgvDevices.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dgvDevices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDevices.Size = new System.Drawing.Size(411, 399);
+            this.dgvDevices.Size = new System.Drawing.Size(534, 399);
             this.dgvDevices.TabIndex = 1;
             // 
             // DevicedForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(411, 399);
+            this.ClientSize = new System.Drawing.Size(534, 399);
             this.Controls.Add(this.dgvDevices);
             this.Name = "DevicedForm";
             this.Text = "Оборудование";

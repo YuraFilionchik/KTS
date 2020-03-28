@@ -22,6 +22,7 @@ namespace KTS
             #region Подписка на события
             this.FormClosed += Form1_FormClosed;
             cbSelectUser.SelectedIndexChanged += CbSelectUser_SelectedIndexChanged;
+            lbDevices.SelectedIndexChanged += LbDevices_SelectedIndexChanged;
             #endregion
 
 
@@ -29,12 +30,42 @@ namespace KTS
             DB.Users.Load();
             bsUsers.DataSource= DB.Users.Local.ToBindingList();
             cbSelectUser.DataSource = bsUsers;
-            lbDevices.DataSource = bsDevs;
-
             #endregion
 
 
 
+        }
+
+        /// <summary>
+        /// Select Device and Show profilactics
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LbDevices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Device selectedDevice = (sender as ListBox).SelectedItem as Device; //выбранное оборудование
+                //теперь ищем закрепленные профилактики для него
+                DB.Profilactics.Load();
+                DB.Devices.Load();
+                DB.Users.Load();
+                if (cbSelectUser.SelectedItem == null) return;                
+                User user = cbSelectUser.SelectedItem as User;
+                if (user == null) return;
+                if (DB.Users.Count() == 0) return;
+                var FixProf = DB.Profilactics.Local.Where(x => x.device.DeviceId == selectedDevice.DeviceId && x.user.UserId==user.UserId);
+                if (FixProf == null) return;
+                //вывод закрепленных профилактив в DataGridView dgvFix
+                BindingSource bsFix = new BindingSource();
+                bsFix.DataSource = FixProf;
+                dgvFix.DataSource = bsFix;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка при выборе оборудования из списка");
+            }
         }
 
         //Select User -> Display devices
@@ -43,13 +74,14 @@ namespace KTS
         //    lbDevices.Items.Clear();
             if (cbSelectUser.SelectedItem == null) return;
             DB.Users.Load();
-            string userFamil = cbSelectUser.SelectedItem.ToString().Split(' ').First();
-            if (userFamil == "empty") return;
+            User user = cbSelectUser.SelectedItem as User;
+            if (user == null) return;
             if (DB.Users.Count() == 0) return;
-            var userDevs = DB.Users.First(x=>x.Familia==userFamil).UserDevices;
+            var userDevs = DB.GetDevsByUser(user);
             //TODO trim Familia from combobox
             if (userDevs == null) return;
-                bsDevs.DataSource=userDevs;
+            lbDevices.Items.Clear();
+            lbDevices.Items.AddRange(userDevs.ToArray());
             
         }
 
@@ -61,11 +93,18 @@ namespace KTS
         //TODO check existing name-fam
         private void ДобавитьРаботникаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            UserForms.UsersForm UserForm = new UserForms.UsersForm(DB);
+            try
+            {
+             UserForms.UsersForm UserForm = new UserForms.UsersForm(DB);
             UserForm.ShowDialog();
             DB.Users.Load();
 
+            }
+            catch ( Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
 
         }
 

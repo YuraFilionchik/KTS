@@ -16,8 +16,8 @@ namespace KTS.UserForms
     {
         MyContext DB;
         private User SelectedUser;
-        private BindingSource bsDevs = new BindingSource();
-        private BindingSource bsProfs = new BindingSource();
+        //private BindingSource bsDevs = new BindingSource();
+       // private BindingSource bsProfs = new BindingSource();
         public UsersForm(MyContext db)
         {
             InitializeComponent();
@@ -25,21 +25,27 @@ namespace KTS.UserForms
             //dgvUSERS.SelectionChanged += DgvUSERS_SelectionChanged;
             DB = db;
             DB.Users.Load();
-            dgvUSERS.DataSource = DB.Users.Local.ToBindingList();
-            dgvUSERS.Columns[3].Visible = false;
-            dgvUSERS.Columns[0].HeaderText = "Фамилия";
-            dgvUSERS.Columns[1].HeaderText = "Имя";
-            dgvUSERS.Columns[2].HeaderText = "Отчество";
-            
-            bsDevs.DataSource = ObservableCollectionExtensions.ToBindingList(DB.Devices.Local);
+
+            SetupTable();
+           // bsDevs.DataSource = ObservableCollectionExtensions.ToBindingList(DB.Devices.Local);
             
         }
 
-        private void DgvUSERS_SelectionChanged(object sender, EventArgs e)
+ private void SetupTable()
         {
-            throw new NotImplementedException();
+            try
+            {
+                dgvUSERS.DataSource = DB.Users.Local.ToBindingList();
+                dgvUSERS.Columns[3].Visible = false;
+                dgvUSERS.Columns[0].HeaderText = "Фамилия";
+                dgvUSERS.Columns[1].HeaderText = "Имя";
+                dgvUSERS.Columns[2].HeaderText = "Отчество";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SetupTable");
+            }
         }
-
         private void Users_FormClosing(object sender, FormClosingEventArgs e)
         {
             DB.SaveChanges();
